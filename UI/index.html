@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+		 
+	 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    	 <link href="css/bootstrap.css" rel="stylesheet" />
+		 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
+	 <link rel="stylesheet" href="css/chat.css"/>
+	 
+
+    <title>Default chat</title>
+    <script src="js/chat.js"></script>	
+</head>
+<body onload="run();" style="font-family:Verdana">
+	<nav class="navbar navbar-default " role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+      <a class="navbar-brand" href="http://www.exadel.com/">Exadel </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Ссылка</a></li>
+        <li><a href="#">Ссылка</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Действие</a></li>
+            <li><a href="#">Другое действие</a></li>
+            <li><a href="#">Что-то еще</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Отдельная ссылка</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Еще одна отдельная ссылка</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" id="search_field" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" id="searchButton" class="btn btn-default" onClick="search()">Отправить</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Ссылка</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Действие</a></li>
+            <li><a href="#">Другое действие</a></li>
+            <li><a href="#">Что-то еще</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Отдельная ссылка</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	
+<div class="container">
+	<div class="row " style="padding-top:10px;">
+    <h3 class="text-center" > WELCOME TO THE CHAT! </h3>
+	
+
+			
+	
+	 <div class="col-md-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                RECENT CHAT HISTORY
+				
+            </div>
+            <div class="panel-body">			
+			
+			<ul class="media-list">
+
+			
+				
+			
+						   <div class="history" style="width:100%;font-family: 'Comic Sans MS', cursive, sans-serif">
+						   
+				
+				</div>
+             
+			
+			</ul>
+			
+								<div class="nav pull-left">Всего сообщений: <span class="counter-holder">0</span> </div>
+							
+			</div>
+			
+			<div class="panel-footer">
+						<div class="input-group">
+						<input id="newMessage" type="text" class="form-control" placeholder="Вешчаць сюда ">
+						<span class="input-group-btn"><button id="sendButton" class="btn btn-info" type="button">Отправить</button>	</span>
+							
+					   </div>
+					   <ul class="pagination pagination-sm ">
+								  <li><a href="#">&laquo;</a></li>
+								  <li><a href="#">1</a></li>
+								  <li><a href="#">2</a></li>
+								  <li><a href="#">3</a></li>
+								  <li><a href="#">4</a></li>
+								  <li><a href="#">5</a></li>
+								  <li><a href="#">&raquo;</a></li>
+								</ul>
+					   </div>		
+   
+        </div>
+    </div>
+	
+    <div class="col-md-4">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+               ALL USERS
+            </div>
+            <div class="panel-body">
+                <ul class="media-list">
+
+                                    <li class="media">
+
+                                        <div class="media-body">
+
+                                            <div class="media">
+                                                <a class="pull-left" href="#">
+                                                    <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
+                                                </a>
+                                                <div class="media-body" >
+                                                    <h5>Alex Deo | User </h5>
+                                                    
+                                                   <small class="text-muted">Active From 3 hours</small>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </li>
+     <li class="media">
+
+                                        <div class="media-body">
+
+                                            <div class="media">
+                                                <a class="pull-left" href="#">
+                                                    <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.gif" />
+                                                </a>
+                                                <div class="media-body" >
+                                                    <h5>Jhon Rexa | User </h5>
+                                                    
+                                                   <small class="text-muted">Active From 3 hours</small>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                   
+                                </ul>
+                </div>
+            </div>
+        
+    </div>
+	
+						
+					   
+	
+<div class="footer ">
+            <small>Created by Kristina for Exadel © 2015</small>
+        </div>	
+</div>
+  </div>
+</body>
+</html> 
