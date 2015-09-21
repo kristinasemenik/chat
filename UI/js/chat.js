@@ -1,5 +1,5 @@
 'use strict';
-
+$.noConflict();
 var uniqueId = function() {
 	var date = Date.now();
 	var random = Math.random() * Math.random();
@@ -34,7 +34,10 @@ function run() {
 	sendButton.addEventListener('click', onSendButtonClick);	
 	doPolling();
 	updateCounter();
+	
 }
+
+
 function updateHistory(newMessages) {
 	for(var i = 0; i < newMessages.length; i++)
 		addMessageInternal(newMessages[i]);
@@ -47,6 +50,7 @@ function search(){
 			query = '';
 			updateCounter();
 		}
+	
 	
 
 function onSendButtonClick(){
@@ -83,14 +87,14 @@ function addMessageInternal(message) {
 function createMessage(message){
 	var temp = document.createElement('div');
 	
-	var htmlAsText = '<li class="media" data-task-id="идентификатор">'
+	var htmlAsText = '<li class="media">'
 	
 		+'<div class="media-body" >'
 			+'<div class="media">'
 			+'<div class="btn-group-sm pull-right">'
-				+'<button class="btn ">1</button>'
-				+'<button class="btn">2</button>'
-				+'<button class="btn">3</button>'
+				+'<button class="btn-one"  data-toggle="tooltip" data-placement="bottom" title="Спрятать"  >1</button>'
+				+'<button class="btn-citate"  data-toggle="tooltip" data-placement="bottom" title="Цитировать">2</button>'
+				+'<button class="btn-user_msgs"  data-toggle="tooltip" data-placement="bottom" title="Упрятать юзера">3</button>'
 			+'</div>'
 			+ message.text + '\n'		
 						
@@ -108,6 +112,22 @@ function createMessage(message){
 	return temp.firstChild;
 }
 
+//hiding toggled elements
+window.onload = function()
+		{
+	var container = document.getElementById('hist');
+
+    container.onclick = function(event) {
+      if (!event.target.classList.contains('btn-one')) return;
+
+      event.target.parentNode.parentNode.parentNode.hidden = !event.target.parentNode.parentNode.parentNode.hidden;
+    }
+   
+};
+            
+    
+	
+	
 function updateCounter(){
 	var messages = document.getElementsByClassName('history')[0];	
 	var counter = document.getElementsByClassName('counter-holder')[0];		
