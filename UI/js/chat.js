@@ -1,5 +1,5 @@
 'use strict';
-$.noConflict();
+
 var uniqueId = function() {
 	var date = Date.now();
 	var random = Math.random() * Math.random();
@@ -34,10 +34,7 @@ function run() {
 	sendButton.addEventListener('click', onSendButtonClick);	
 	doPolling();
 	updateCounter();
-	
 }
-
-
 function updateHistory(newMessages) {
 	for(var i = 0; i < newMessages.length; i++)
 		addMessageInternal(newMessages[i]);
@@ -45,13 +42,49 @@ function updateHistory(newMessages) {
 	
 function search(){
 		var query=document.getElementById('search_field').value;
-		$('.media').hide();
+		$('.history .media').hide();
 		$('.media:contains('+query+')').show();
-			query = '';
-			updateCounter();
+			query = '';	
+		updateCounter();			
 		}
+		
+//hiding toggled element 		
+window.onload = function()
+		{
 	
+	$(document.body).on('click','.btn-group-sm', function(event){
 	
+	console.log(event.target);
+	
+	if($(event.target).hasClass("btn-hideone")){//hide one message 
+												//alert("hi from if");
+												 //console.log("fom if 1 "+event.target);
+												 $(event.target).parent().parent().parent().parent().hide();
+													}
+	else if($(event.target).hasClass("btn-quote")){ 
+									//add a comment to bomebody's message
+									//alert("hi from quuote");
+									//console.log("from if 2 "+event.target);											
+									var text_to_quote = $(event.target).parent().parent().children(".msg").html();	
+									var inputvalue= $("#newMessage").val();
+									$("#newMessage").val( inputvalue+'<br>'+'<i>'+text_to_quote+'</i>'+'<br>' + '<hr>');												
+									}
+	else if($(event.target).hasClass("btn-hideallusers")){ 
+									//alert("hi fromall users");
+									//console.log("from if 3 "+event.target);
+									var user=$(event.target).parent().parent().children(".text-muted").html();
+									
+									$(".text-muted:contains("+user+")").parent().hide();									
+										user = '';	
+									updateCounter();			
+									}
+									
+									
+				else {alert("nothing");}
+  
+  });
+  
+}
 
 function onSendButtonClick(){
 	var newMessageBox = document.getElementById('newMessage');
@@ -87,16 +120,18 @@ function addMessageInternal(message) {
 function createMessage(message){
 	var temp = document.createElement('div');
 	
-	var htmlAsText = '<li class="media">'
+	var htmlAsText = '<li class="media" >'
 	
 		+'<div class="media-body" >'
 			+'<div class="media">'
 			+'<div class="btn-group-sm pull-right">'
-				+'<button class="btn-one"  data-toggle="tooltip" data-placement="bottom" title="Спрятать"  >1</button>'
-				+'<button class="btn-citate"  data-toggle="tooltip" data-placement="bottom" title="Цитировать">2</button>'
-				+'<button class="btn-user_msgs"  data-toggle="tooltip" data-placement="bottom" title="Упрятать юзера">3</button>'
+				+'<button class="btn-hideone" title="Спрятать это \n сообщение">1</button>'
+				+'<button class="btn-quote" title="Цитировать">2</button>'
+				+'<button class="btn-hideallusers" title="Спрятать все сообщения \n этого пользователя">3</button>'
 			+'</div>'
-			+ message.text + '\n'		
+			+ '<div class="msg">'
+			+message.text 
+			+'</div>'
 						
 			+'<br />'
 			+'<small class="text-muted">'+message.user +'</small>'
@@ -112,22 +147,6 @@ function createMessage(message){
 	return temp.firstChild;
 }
 
-//hiding toggled elements
-window.onload = function()
-		{
-	var container = document.getElementById('hist');
-
-    container.onclick = function(event) {
-      if (!event.target.classList.contains('btn-one')) return;
-
-      event.target.parentNode.parentNode.parentNode.hidden = !event.target.parentNode.parentNode.parentNode.hidden;
-    }
-   
-};
-            
-    
-	
-	
 function updateCounter(){
 	var messages = document.getElementsByClassName('history')[0];	
 	var counter = document.getElementsByClassName('counter-holder')[0];		
