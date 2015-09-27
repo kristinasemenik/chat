@@ -5,3 +5,4 @@ New:
 	+hide all user's messages
 -works search in history of messages
 -promt-title for button
+-added name of current user id

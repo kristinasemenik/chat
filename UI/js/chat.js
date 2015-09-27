@@ -50,8 +50,13 @@ function search(){
 		
 //hiding toggled element 		
 window.onload = function()
-		{
+		{	
+	//show who you are	
+	var user=appState.user;
+	var text_user=document.getElementById('user');
+	text_user.innerHTML='Welcome, '+user;	
 	
+	//menu-buttons clicks
 	$(document.body).on('click','.btn-group-sm', function(event){
 	
 	console.log(event.target);
@@ -81,11 +86,46 @@ window.onload = function()
 									
 									
 				else {alert("nothing");}
-  
-  });
-  
-}
+  }); 
+	}
+/*	
+function uzery(){
+	//show all users list
+	//var users=$()
+	//var divs = $('.history .text-muted');//document.getElementsByClassName( '.text-muted' );
+	var divs=appState.history;
+	var users=[];
 
+		var c=divs.length;
+		alert('length ='+c);
+		
+		var k=1;//schetchik userov
+		users[0]===divs[0].user;
+		for (var j = 1; j<c; j++){
+		
+			var has_been=0;	//bool - was/wasn't	count user
+			for( var i = 0; i < k; i++ ) {
+				
+				if (users[i]===divs[j].user) {
+					has_been=1;
+					}
+				}
+					
+			if (has_been==0){//esli ne bylo usera s takim imenem
+					k=k+1;
+					users[k]===divs[j].user;
+				}	
+				//alert('j= '+j);
+		}	
+		//alert('k= '+k);
+		//var k=$('.history .text-muted').length;
+		//var userrr=appState.history;
+		for (var i=0; i<k;i++){			
+			alert(users[i]);				
+				}
+				//break;
+	}
+*/	
 function onSendButtonClick(){
 	var newMessageBox = document.getElementById('newMessage');
 	var newMessage = theMessage(newMessageBox.value);
