@@ -87,7 +87,20 @@ window.onload = function()
 									
 				else {alert("nothing");}
   }); 
+  //show all user messages by username click
+	$(document.body).on('click','.history .text-muted', function(event){	 
+		console.log(event.target); 
+		var user = event.target;
+		alert('happened '+event.target);	
+		var cont=$(event.target).parent().children('.text-muted').html();
+			alert(cont);
+		$('.media').hide();
+		$('.media:contains('+cont+')').show();
+		});	
 	}
+	
+
+	
 /*	
 function uzery(){
 	//show all users list

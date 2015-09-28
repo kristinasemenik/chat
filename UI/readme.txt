@@ -6,3 +6,4 @@ New:
 -works search in history of messages
 -promt-title for button
 -added name of current user id
+-added filter by username (on username click)
